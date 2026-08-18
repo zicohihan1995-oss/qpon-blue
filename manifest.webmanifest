@@ -1,0 +1,13 @@
+{
+  "name": "Q-PON プロジェクトZ",
+  "short_name": "Q-PON",
+  "description": "プロジェクトZ本番用 音響台本プレイヤー",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#061B4F",
+  "theme_color": "#061B4F",
+  "orientation": "any",
+  "icons": [
+    { "src": "QPON-home-icon.png", "sizes": "1254x1254", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

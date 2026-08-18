@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#061B4F">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Q-PON">
+  <title>Q-PON｜プロジェクトZ</title>
+  <link rel="manifest" href="manifest.webmanifest?v=home-icon">
+  <link rel="apple-touch-icon" href="QPON-home-icon.png">
+  <link rel="icon" href="QPON-home-icon.png" type="image/png">
+  <link rel="stylesheet" href="styles.css?v=4-blue-master-fo">
+</head>
+<body>
+  <header class="control-deck">
+    <div class="brand-row">
+      <div class="brand-lockup">
+        <img src="QPON_LOGO.png" alt="Q-PON" class="brand-logo">
+        <span class="version">v4 BLUE</span>
+      </div>
+      <div id="systemStatus" class="status pending">音源 未準備</div>
+    </div>
+    <div class="master-row">
+      <label class="volume-control">MASTER
+        <input id="masterVolume" type="range" min="0" max="1" step="0.01" value="1">
+        <output id="masterVolumeValue">100%</output>
+      </label>
+      <button id="masterFo" class="fo-button" type="button">MASTER FO</button>
+      <div class="fo-time">
+        <label for="masterFoPreset">時間</label>
+        <select id="masterFoPreset" aria-label="マスターフェードアウト時間">
+          <option value="1">1秒</option>
+          <option value="2">2秒</option>
+          <option value="3">3秒</option>
+          <option value="5">5秒</option>
+          <option value="10">10秒</option>
+          <option value="custom">任意</option>
+        </select>
+        <label id="customFoWrap" class="custom-fo" for="masterFoSeconds">
+          <input id="masterFoSeconds" type="number" min="0.1" max="30" step="0.1" value="3" inputmode="decimal" aria-label="任意のフェードアウト秒数">秒
+        </label>
+      </div>
+      <button id="stopAll" class="stop-button" type="button">STOP</button>
+    </div>
+    <div class="prep-row">
+      <button id="prepareAudio" type="button">音源を準備</button>
+      <button id="prepareOffline" type="button">オフライン保存</button>
+      <span id="prepDetail">本番前に「音源を準備」を押してください</span>
+    </div>
+    <div id="activeList" class="active-list" aria-live="polite">再生中：なし</div>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h1>ボンバーマンキマー生誕祭<br><small>プロジェクトＺ 音響台本</small></h1>
+      <p>台本を上から読み、Q位置でボタンを押す。音は重ねて再生できます。</p>
+    </section>
+    <section id="script" class="script" aria-label="音響台本"></section>
+    <footer class="show-mark" aria-label="自己批判ショー">
+      <img src="zico-hihan-logo-white.png" alt="自己批判ショー" class="show-logo">
+    </footer>
+  </main>
+
+  <template id="cueTemplate">
+    <article class="cue-block">
+      <button class="cue-trigger" type="button"><span class="cue-number"></span><span class="cue-state">READY</span></button>
+      <div class="cue-asset-status" aria-live="polite">
+        <span class="cue-load-status pending">音源：未読込</span>
+        <span class="cue-offline-status pending">オフライン：未保存</span>
+      </div>
+      <div class="cue-copy"></div>
+      <details class="cue-settings">
+        <summary>Q設定</summary>
+        <div class="settings-grid">
+          <label>個別音量 <input class="cue-volume" type="range" min="0" max="1" step="0.01"><output class="cue-volume-value"></output></label>
+          <label class="toggle"><input class="cue-fi" type="checkbox"> FI ON</label>
+          <label>FI秒数 <input class="cue-fi-seconds" type="number" min="0.1" max="30" step="0.1"> 秒</label>
+        </div>
+      </details>
+    </article>
+  </template>
+
+  <script src="script-data.js"></script>
+  <script src="app.js?v=4-blue-master-fo"></script>
+</body>
+</html>
